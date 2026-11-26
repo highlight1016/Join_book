@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="제주 새벽 책방. 한 달에 한 권, 끝까지 읽는 사람들.">
+  <title>제주 새벽 책방 | 독서모임 멤버 모집</title>
+  <style>
+    :root {
+      --ink: #171717;
+      --gray-900: #282828;
+      --gray-700: #555;
+      --gray-500: #858585;
+      --gray-300: #d4d4d4;
+      --gray-200: #e7e7e7;
+      --gray-100: #f3f3f3;
+      --paper: #fafafa;
+      --white: #fff;
+      --line: rgba(20,20,20,.14);
+      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.75; word-break: keep-all; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1080px, calc(100% - 44px)); margin: 0 auto; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding:22px 0; border-bottom:1px solid var(--line); font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+    .brand { font-weight:800; letter-spacing:.08em; }
+    .topbar .edition { color:var(--gray-500); }
+    .hero { min-height:660px; padding:100px 0 76px; display:flex; align-items:center; position:relative; overflow:hidden; }
+    .hero::after { content:"BOOKS / PEOPLE / JEJU"; position:absolute; right:-8px; bottom:32px; font-size:clamp(26px,6vw,70px); font-weight:800; letter-spacing:.08em; color:rgba(0,0,0,.035); white-space:nowrap; pointer-events:none; }
+    .hero-inner { max-width:760px; position:relative; z-index:1; }
+    .eyebrow { display:flex; align-items:center; gap:12px; color:var(--gray-700); font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:30px; }
+    .eyebrow::before { content:""; width:32px; height:1px; background:var(--ink); }
+    h1 { margin:0; font-size:clamp(54px,9vw,108px); line-height:1.12; letter-spacing:-.075em; font-weight:800; }
+    h1 .small { display:block; font-family:var(--serif); font-weight:400; font-style:italic; font-size:clamp(24px,4vw,42px); letter-spacing:-.03em; margin-top:22px; }
+    .hero-desc { margin:34px 0 0; color:var(--gray-700); font-size:17px; line-height:1.9; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:40px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:18px; padding:16px 24px; min-height:54px; border:1px solid var(--ink); font-size:13px; letter-spacing:.04em; transition:.2s ease; }
+    .btn-primary { background:var(--ink); color:var(--white); }
+    .btn-primary:hover { background:#454545; }
+    .btn-outline:hover { background:var(--gray-100); }
+    .micro { font-size:11px; color:var(--gray-500); }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .stat { padding:25px 20px; border-right:1px solid var(--line); }
+    .stat:last-child { border-right:0; }
+    .stat-label { color:var(--gray-500); font-size:11px; letter-spacing:.13em; }
+    .stat-value { margin-top:8px; font-size:20px; font-weight:700; letter-spacing:-.03em; }
+    section { padding:100px 0; border-bottom:1px solid var(--line); }
+    .section-head { display:grid; grid-template-columns:180px 1fr; gap:30px; margin-bottom:52px; }
+    .section-no { color:var(--gray-500); font-size:12px; letter-spacing:.14em; padding-top:10px; }
+    h2 { margin:0; font-size:clamp(30px,5vw,48px); line-height:1.25; letter-spacing:-.06em; }
+    .lead { margin:20px 0 0; color:var(--gray-700); font-size:16px; max-width:640px; }
+    .intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    .quote-card { padding:38px; background:var(--gray-100); border:1px solid var(--line); min-height:280px; display:flex; flex-direction:column; justify-content:space-between; }
+    .quote-mark { font-family:var(--serif); font-size:60px; line-height:1; color:var(--gray-500); }
+    .quote { font-family:var(--serif); font-size:26px; line-height:1.5; letter-spacing:-.02em; }
+    .quote-foot { color:var(--gray-500); font-size:11px; letter-spacing:.12em; }
+    .intro-copy p { margin:0 0 18px; color:var(--gray-700); }
+    .intro-copy strong { color:var(--ink); }
+    .people-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .person { border:1px solid var(--line); padding:24px 25px; display:flex; gap:18px; align-items:flex-start; min-height:120px; }
+    .person-num { font-family:var(--serif); font-size:24px; color:var(--gray-500); }
+    .person h3 { margin:0 0 5px; font-size:16px; letter-spacing:-.03em; }
+    .person p { margin:0; font-size:13px; color:var(--gray-700); }
+    .schedule { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); }
+    .schedule-item { padding:30px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); }
+    .schedule-item:nth-child(2n) { border-right:0; }
+    .schedule-item:nth-last-child(-n+2) { border-bottom:0; }
+    .schedule-label { color:var(--gray-500); font-size:11px; letter-spacing:.14em; }
+    .schedule-value { font-size:20px; font-weight:700; margin-top:9px; letter-spacing:-.03em; }
+    .schedule-note { font-size:13px; color:var(--gray-700); margin-top:8px; }
+    .book-card { display:grid; grid-template-columns:260px 1fr; gap:48px; align-items:center; padding:40px; background:#eeeeee; border:1px solid var(--line); }
+    .book-cover { aspect-ratio:3/4; max-width:240px; margin:auto; background:linear-gradient(145deg,#303030,#111); color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:25px; box-shadow:12px 14px 0 rgba(0,0,0,.08); position:relative; overflow:hidden; }
+    .book-cover::before { content:""; position:absolute; width:190px; height:190px; border:1px solid rgba(255,255,255,.16); border-radius:50%; right:-80px; top:80px; }
+    .book-cover::after { content:""; position:absolute; width:150px; height:150px; border:1px solid rgba(255,255,255,.1); border-radius:50%; right:-50px; top:110px; }
+    .cover-label { font-size:10px; letter-spacing:.18em; opacity:.7; }
+    .cover-title { font-family:var(--serif); font-size:35px; line-height:1.25; letter-spacing:-.04em; z-index:1; }
+    .cover-author { font-size:12px; opacity:.75; z-index:1; }
+    .book-kicker { font-size:11px; letter-spacing:.14em; color:var(--gray-500); }
+    .book-title { font-family:var(--serif); font-size:clamp(28px,4vw,42px); line-height:1.3; margin:12px 0; letter-spacing:-.04em; }
+    .book-author { color:var(--gray-700); font-size:14px; }
+    .book-desc { margin-top:24px; color:var(--gray-700); font-size:14px; }
+    .book-tag { display:inline-block; border:1px solid var(--gray-500); padding:5px 10px; font-size:11px; margin-top:20px; }
+    .faq { border-top:1px solid var(--line); }
+    .faq-item { border-bottom:1px solid var(--line); }
+    .faq-q { width:100%; padding:24px 0; display:flex; justify-content:space-between; align-items:center; gap:20px; background:none; border:0; color:var(--ink); font:inherit; text-align:left; cursor:pointer; }
+    .faq-q strong { font-size:15px; font-weight:650; }
+    .faq-icon { width:26px; height:26px; border:1px solid var(--gray-300); display:grid; place-items:center; flex-shrink:0; transition:transform .2s; font-size:18px; line-height:1; }
+    .faq-q[aria-expanded="true"] .faq-icon { transform:rotate(45deg); }
+    .faq-a { display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; }
+    .faq-a.open { grid-template-rows:1fr; }
+    .faq-a-inner { overflow:hidden; }
+    .faq-a p { margin:0; padding:0 42px 24px 0; color:var(--gray-700); font-size:14px; }
+    .final { background:var(--ink); color:var(--white); border:0; padding:90px 0; }
+    .final .section-no, .final .lead, .final .final-meta { color:#b9b9b9; }
+    .final h2 { font-size:clamp(34px,6vw,62px); }
+    .final-meta { display:flex; gap:22px; flex-wrap:wrap; margin:30px 0; font-size:13px; }
+    .final .btn-primary { background:white; color:black; border-color:white; }
+    .final .btn-primary:hover { background:#ddd; }
+    footer { padding:28px 0; font-size:11px; color:var(--gray-500); display:flex; justify-content:space-between; gap:20px; }
+    @media (max-width:720px) {
+      .wrap { width:min(100% - 32px, 1080px); }
+      .hero { min-height:560px; padding:75px 0 65px; }
+      .hero-desc { font-size:15px; }
+      .stats { grid-template-columns:1fr; }
+      .stat { display:flex; justify-content:space-between; align-items:center; padding:16px 18px; border-right:0; border-bottom:1px solid var(--line); }
+      .stat:last-child { border-bottom:0; }
+      .stat-value { margin-top:0; font-size:17px; }
+      section { padding:70px 0; }
+      .section-head { grid-template-columns:1fr; gap:12px; margin-bottom:34px; }
+      .section-no { padding-top:0; }
+      .intro-grid, .people-grid, .schedule, .book-card { grid-template-columns:1fr; }
+      .quote-card { min-height:230px; padding:28px; }
+      .person { min-height:auto; padding:20px; }
+      .schedule-item { padding:22px; border-right:0; }
+      .schedule-item:nth-child(2n) { border-right:0; }
+      .schedule-item:nth-last-child(2) { border-bottom:1px solid var(--line); }
+      .book-card { padding:26px; gap:32px; }
+      .book-cover { width:190px; }
+      .faq-q { padding:20px 0; }
+      .faq-q strong { font-size:14px; }
+      .final { padding:70px 0; }
+      footer { flex-direction:column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { transition:none !important; } }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#top">JEJU DAWN BOOK CLUB</a>
+    <span class="edition">READ SLOWLY · 2026</span>
+  </header>
+
+  <main>
+    <div class="hero wrap" id="top">
+      <div class="hero-inner">
+        <div class="eyebrow">A small gathering for readers</div>
+        <h1>제주 새벽 책방<span class="small">한 달에 한 권, 끝까지 읽는 사람들</span></h1>
+        <p class="hero-desc">책을 읽는 속도보다, 한 페이지를 오래 바라보는 마음.<br>혼자 읽던 책을 함께 읽고, 각자의 문장으로 이야기해요.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary apply-link" href="https://docs.google.com/forms/d/e/1FAIpQLScJf2mD8DJPXpkdWWo8zGc6coFQ792id-lGGCVmZskFB1WmCw/viewform" target="_blank" rel="noopener noreferrer">독서모임 신청하기 <span>↗</span></a>
+          <a class="btn btn-outline" href="#about">모임 더 알아보기 <span>↓</span></a>
+        </div>
+        <p class="micro" style="margin-top:15px">12월 10일 모집 마감 · 선착순 8명</p>
+      </div>
+    </div>
+
+    <div class="wrap stats" aria-label="모임 요약">
+      <div class="stat"><span class="stat-label">MEETING</span><span class="stat-value">매월 둘째 주 토요일 · 10 AM</span></div>
+      <div class="stat"><span class="stat-label">LOCATION</span><span class="stat-value">제주시 내 카페</span></div>
+      <div class="stat"><span class="stat-label">MEMBERSHIP</span><span class="stat-value">8명 · 월 10,000원</span></div>
+    </div>
+
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">01 / ABOUT</div><div><h2>책 한 권을 읽는 데,<br>꼭 혼자일 필요는 없으니까.</h2><p class="lead">읽고 싶은 마음은 있지만 자꾸 미뤄지는 책. 이번에는 함께 읽어봐요.</p></div></div>
+        <div class="intro-grid">
+          <div class="quote-card"><div class="quote-mark">“</div><div class="quote">읽는 사람의 하루가 모여<br>작은 책방의 시간이 됩니다.</div><div class="quote-foot">JEJU DAWN BOOK CLUB</div></div>
+          <div class="intro-copy"><p><strong>제주 새벽 책방</strong>은 한 달에 한 권의 책을 천천히 읽고, 한 달에 한 번 만나 서로의 감상을 나누는 소규모 독서모임입니다.</p><p>책을 잘 읽는 사람보다, 책을 읽어보려는 사람을 환영해요. 정답을 찾거나 멋진 감상을 말하는 자리가 아니라, 책을 통해 나와 다른 생각을 만나보는 시간입니다.</p><p>커피 한 잔과 책 한 권. 부담 없이, 그러나 꾸준히 함께 읽어요.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">02 / FOR YOU</div><div><h2>이런 분을 찾아요.</h2><p class="lead">대단한 독서가일 필요는 없어요. 작은 시작이면 충분합니다.</p></div></div>
+        <div class="people-grid">
+          <article class="person"><div class="person-num">01</div><div><h3>책 읽는 습관을 만들고 싶은 분</h3><p>책을 사두고 덮어두는 일이 익숙하다면.</p></div></article>
+          <article class="person"><div class="person-num">02</div><div><h3>혼자보다 함께 읽고 싶은 분</h3><p>함께 읽는 약속으로 완독에 가까워지고 싶다면.</p></div></article>
+          <article class="person"><div class="person-num">03</div><div><h3>다른 사람의 생각이 궁금한 분</h3><p>같은 책을 읽고도 다른 감상을 발견하고 싶다면.</p></div></article>
+          <article class="person"><div class="person-num">04</div><div><h3>느슨하지만 꾸준한 모임을 원하는 분</h3><p>과한 친목이나 경쟁 없이 편안하게 참여하고 싶다면.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">03 / HOW WE MEET</div><div><h2>읽고, 만나고, 나눠요.</h2><p class="lead">매달 같은 리듬으로. 책을 읽고 모임에서 나누는 단순한 방식으로 운영합니다.</p></div></div>
+        <div class="schedule">
+          <div class="schedule-item"><div class="schedule-label">WHEN</div><div class="schedule-value">매달 둘째 주 토요일 · 오전 10시</div><div class="schedule-note">월 1회 정기 모임</div></div>
+          <div class="schedule-item"><div class="schedule-label">WHERE</div><div class="schedule-value">제주시 내 카페</div><div class="schedule-note">세부 장소는 멤버에게 별도 안내</div></div>
+          <div class="schedule-item"><div class="schedule-label">READ</div><div class="schedule-value">한 달에 책 한 권</div><div class="schedule-note">각자 읽고 기억에 남는 문장을 가져와요.</div></div>
+          <div class="schedule-item"><div class="schedule-label">GATHER</div><div class="schedule-value">약 1시간 30분</div><div class="schedule-note">감상 나누기 · 질문 · 자유로운 이야기</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">04 / THIS MONTH</div><div><h2>함께 읽을 첫 번째 책.</h2><p class="lead">첫 모임의 책은 편안하게 이야기를 시작할 수 있는 소설로 골랐어요.</p></div></div>
+        <div class="book-card">
+          <div class="book-cover" aria-label="불편한 편의점 책 표지를 모티브로 한 디자인"><div class="cover-label">MONTH 01 · BOOK CLUB</div><div class="cover-title">불편한<br>편의점</div><div class="cover-author">김호연</div></div>
+          <div><div class="book-kicker">FIRST MONTH'S BOOK</div><div class="book-title">《불편한 편의점》</div><div class="book-author">김호연 · 소설</div><p class="book-desc">서울의 작은 편의점을 배경으로, 낯선 사람들의 일상과 관계가 이어지는 이야기. 익숙한 하루 속에서 우리가 놓치고 있던 마음을 함께 들여다봅니다.</p><span class="book-tag">첫 달 함께 읽기</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">05 / FAQ</div><div><h2>자주 묻는 질문.</h2><p class="lead">처음 참여하는 분들이 궁금해할 내용을 모았어요.</p></div></div>
+        <div class="faq">
+          <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a1"><strong>책을 다 읽지 못해도 참여할 수 있나요?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-a1"><div class="faq-a-inner"><p>네, 괜찮아요. 완독을 권장하지만 부담을 주는 모임은 아닙니다. 읽은 부분까지의 감상이나 인상 깊었던 문장만으로도 충분히 이야기할 수 있어요.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a2"><strong>혼자 신청해도 어색하지 않을까요?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-a2"><div class="faq-a-inner"><p>대부분 처음에는 서로 모르는 사이일 수 있어요. 소규모로 진행하고 간단한 소개와 책 이야기부터 시작하니 혼자 신청하셔도 편하게 참여할 수 있습니다.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><strong>월 회비 1만 원은 어디에 사용되나요?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-a3"><div class="faq-a-inner"><p>모임 운영과 준비에 필요한 비용으로 사용합니다. 카페 음료 및 개인 주문 비용은 회비에 포함되지 않으며 각자 부담합니다.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a4"><strong>매달 꼭 참석해야 하나요?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-a4"><div class="faq-a-inner"><p>꾸준한 참여를 권장하지만 불가피한 일정이 있을 수 있죠. 참석이 어려운 달에는 미리 알려주세요. 서로의 시간을 존중하는 방식으로 운영합니다.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="apply">
+      <div class="wrap">
+        <div class="section-no">06 / JOIN US</div>
+        <h2>다음 페이지가 아닌,<br>다음 모임에서 만나요.</h2>
+        <p class="lead">책 한 권을 끝까지 읽는 한 달.<br>제주 새벽 책방의 첫 멤버를 기다립니다.</p>
+        <div class="final-meta"><span>모집 마감 · 2026. 12. 10.</span><span>정원 · 8명</span><span>회비 · 월 10,000원</span></div>
+        <a class="btn btn-primary apply-link" href="https://docs.google.com/forms/d/e/1FAIpQLScJf2mD8DJPXpkdWWo8zGc6coFQ792id-lGGCVmZskFB1WmCw/viewform" target="_blank" rel="noopener noreferrer">멤버 신청하기 <span>↗</span></a>
+        <p class="micro" style="color:#aaa;margin-top:16px">신청 후 개별 안내를 드립니다.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><span>© 2026 JEJU DAWN BOOK CLUB</span><span>READ SLOWLY. STAY CURIOUS.</span></footer>
+  <script>
+    // FAQ accordion: 질문을 클릭하면 답변이 펼쳐지고 다시 클릭하면 접힙니다.
+    document.querySelectorAll('.faq-q').forEach((button) => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        button.setAttribute('aria-expanded', String(!expanded));
+        panel.classList.toggle('open', !expanded);
+      });
+    });
+    // 신청 링크 교체: 아래 FORM_URL에 실제 Google Form 주소를 넣으면 모든 신청 버튼에 적용됩니다.
+    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScJf2mD8DJPXpkdWWo8zGc6coFQ792id-lGGCVmZskFB1WmCw/viewform';
+    document.querySelectorAll('.apply-link').forEach((link) => {
+      link.href = FORM_URL;
+    });
+  </script>
+</body>
+</html>
